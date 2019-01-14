@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package com.fleetmgr.interfaces.facade.control;
+
+option java_multiple_files = true;
+
+import "common/channel_management.proto";
+import "common/handover_data.proto";
+
+import "facade/control/setup.proto";
+import "facade/control/heartbeat.proto";
+
+enum Command {
+    UNDEFINED_CMD = 0;
+
+    HEARTBEAT = 1;
+    SETUP = 2;
+    RELEASE = 3;
+
+    ADD_CHANNELS = 11;
+    REMOVE_CHANNELS = 12;
+    ATTACH_CHANNELS = 13;
+    RELEASE_CHANNELS = 14;
+    CHANNELS_READY = 15;
+
+    REQUEST_CONTROL = 21;
+    RELEASE_CONTROL = 22;
+    CONTROL_RELEASED = 23;
+    CONTROL_READY = 24;
+
+    OPERATION_ENDED = 31;
+    OPERATION_UPDATED = 32;
+
+    CONNECTION_LOST = 41;
+    RECOVERY = 43;
+    RECOVERED = 44;
+}
+
+enum Response {
+    UNDEFINED_RSP = 0;
+    ACCEPTED = 1;
+    REJECTED = 2;
+}
+
+message ClientMessage {
+    Command command = 1;
+    Response response = 2;
+    string message = 3;
+
+    SetupRequest attach = 50;
+    ChannelRequestList channelsRequest = 51;
+    ChannelIndicationList channelsIndication = 53;
+    HandoverData handoverData = 54;
+    HeartbeatResponse heartbeat = 55;
+}
+
+message ControlMessage {
+    Command command = 1;
+    Response response = 2;
+    string message = 3;
+
+    SetupResponse attach = 50;
+    ChannelResponseList channelsResponse = 51;
+    ChannelIndicationList channelsIndication = 52;
+    HandoverData handoverData = 53;
+    HeartbeatRequest heartbeat = 54;
+}
+
+service FacadeService {
+    rpc control(stream ClientMessage) returns (stream ControlMessage);
+}
