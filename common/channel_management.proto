@@ -20,10 +20,18 @@ enum Priority {
     BEST_EFFORT = 3; // for example offline sensors data stream
 }
 
+enum Security {
+    UNDEFINED_SECURITY = 0;
+
+    PLAIN_TEXT = 1;
+    TLS = 2;
+}
+
 message ChannelRequest {
     int64 id = 1;
     Protocol protocol = 2;
     Priority priority = 3;
+    Security security = 4;
 }
 
 message ChannelRequestList {
