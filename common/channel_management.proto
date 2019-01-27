@@ -30,8 +30,8 @@ enum Security {
 message ChannelRequest {
     int64 id = 1;
     Protocol protocol = 2;
-    Priority priority = 3;
-    Security security = 4;
+    Security security = 3;
+    Priority priority = 4;
 }
 
 message ChannelRequestList {
@@ -40,9 +40,11 @@ message ChannelRequestList {
 
 message ChannelResponse {
     int64 id = 1;
-    string host = 2;
-    int32 port = 3;
-    string key = 4;
+    Protocol protocol = 2;
+    Security security = 3;
+    string host = 4;
+    int32 port = 5;
+    string key = 6;
 }
 
 message ChannelResponseList {
