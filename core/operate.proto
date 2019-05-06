@@ -10,7 +10,8 @@ message OperateRequest {
 
 message OperateResponse {
     string host = 1;
-    int32 port = 2;
-    string key = 3;
+    int32 unsafePort = 2;
+    int32 tlsPort = 3;
+    string key = 4;
 }
 
