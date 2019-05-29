@@ -9,4 +9,7 @@ message SetupRequest {
 }
 
 message SetupResponse {
+    int64 supervisionIntervalMs = 1;
+    int64 unreachableTimeoutMs = 2;
+    int64 recoveringTimeoutMs = 3;
 }

@@ -47,7 +47,7 @@ message ClientMessage {
     Response response = 2;
     string message = 3;
 
-    SetupRequest attach = 50;
+    SetupRequest setupRequest = 50;
     ChannelRequestList channelsRequest = 51;
     ChannelIndicationList channelsIndication = 53;
     HandoverData handoverData = 54;
@@ -59,7 +59,7 @@ message ControlMessage {
     Response response = 2;
     string message = 3;
 
-    SetupResponse attach = 50;
+    SetupResponse setupResponse = 50;
     ChannelResponseList channelsResponse = 51;
     ChannelIndicationList channelsIndication = 52;
     HandoverData handoverData = 53;
