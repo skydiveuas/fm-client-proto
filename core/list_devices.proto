@@ -9,8 +9,10 @@ import "common/connection_state.proto";
 message Device {
     int64 id = 1;
     string name = 2;
-    ConnectionState connectionState = 3;
+    string owner = 3;
     string type = 4;
+    ConnectionState connection = 5;
+    string metadata = 6;
 }
 
 message ListDevicesResponse {
