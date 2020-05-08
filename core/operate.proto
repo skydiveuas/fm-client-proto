@@ -5,7 +5,7 @@ package com.fleetmgr.interfaces;
 option java_multiple_files = true;
 
 message OperateRequest {
-    uint64 deviceId = 1;
+    string deviceId = 1;
 }
 
 message OperateResponse {
